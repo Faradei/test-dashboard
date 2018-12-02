@@ -1,8 +1,12 @@
 <span>{{ group.name }}</span>
-<div [attr.group-id]="group.id" class="tasks-container" cdkDropList (cdkDropListDropped)="drop($event)">
+<div
+  class="tasks-container"
+  cdkDropList
+  [cdkDropListData]="group.id"
+  (cdkDropListDropped)="drop($event)">
   <task
-    [attr.task-id]="task.id"
     cdkDrag
+    [cdkDragData]="task.id"
     *ngFor="let task of tasks$ | async" [task]="task"
     (click)="showDialog(task)"></task>
   <div class="hover add" (click)="addTask()"></div>

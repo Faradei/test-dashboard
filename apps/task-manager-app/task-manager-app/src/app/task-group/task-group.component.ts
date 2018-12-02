@@ -40,8 +40,9 @@ export class TaskGroupComponent implements OnInit {
 
   public drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer !== event.container) {
-      const taskId: number = Number(event.item.element.nativeElement.getAttribute('task-id'));
-      const groupId: number = Number(event.container.element.nativeElement.getAttribute('group-id'));
+      console.log(event);
+      const taskId: number = <any> event.item.data;
+      const groupId: number = <any> event.container.data;
       this._store.dispatch(new MoveToGroup({taskId, groupId}));
     }
   }

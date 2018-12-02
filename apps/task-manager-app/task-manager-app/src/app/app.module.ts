@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { TaskGroupComponent } from './task-group/task-group.component';
 import { TaskComponent } from './task/task.component';
 import { MainComponent } from './main/main.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskGroupComponent, TaskComponent, MainComponent, AddTaskComponent],
+  declarations: [AppComponent, TaskGroupComponent, TaskComponent, MainComponent, AddTaskComponent, TaskDialogComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -39,6 +40,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     EffectsModule.forRoot([]),
     NxModule.forRoot(),
@@ -48,6 +50,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' })
   ],
+  entryComponents: [TaskDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

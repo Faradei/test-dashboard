@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -6,8 +7,9 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TaskGroup } from '../model/TaskGroup';
 import { Task } from '../model/Task';
 import { selectTasksForGroup } from '../store/selectors';
-import { DeleteTasksFromGroup, MoveToGroup } from '../store/task.action';
+import { DeleteTasksFromGroup, MoveToGroup, DeleteTask } from '../store/task.action';
 import { DeleteTaskGroup } from '../store/task-group.action';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
 @Component({
   selector: 'task-group',
@@ -19,7 +21,9 @@ export class TaskGroupComponent implements OnInit {
 
   public tasks$: Observable<Task[]>;
 
-  constructor(private _router: Router, private _store: Store<{ tasks: Task[] }>) {}
+  constructor(private _router: Router,
+    private _store: Store<{ tasks: Task[] }>,
+    private _dialog: MatDialog) {}
 
   public ngOnInit(): void {
     this.tasks$ = this._store.pipe(select(selectTasksForGroup(this.group.id)));
@@ -40,5 +44,14 @@ export class TaskGroupComponent implements OnInit {
       const groupId: number = Number(event.container.element.nativeElement.getAttribute('group-id'));
       this._store.dispatch(new MoveToGroup({taskId, groupId}));
     }
+  }
+
+  public showDialog(task: Task): void {
+    const dialogRef = this._dialog.open(TaskDialogComponent, { data : task });
+    dialogRef.afterClosed().subscribe(shouldDelete => {
+      if (shouldDelete) {
+        this._store.dispatch(new DeleteTask(task));
+      }
+    });
   }
 }

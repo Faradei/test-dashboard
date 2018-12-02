@@ -1,6 +1,10 @@
 <span>{{ group.name }}</span>
 <div [attr.group-id]="group.id" class="tasks-container" cdkDropList (cdkDropListDropped)="drop($event)">
-  <task [attr.task-id]="task.id" cdkDrag *ngFor="let task of tasks$ | async" [task]="task"></task>
+  <task
+    [attr.task-id]="task.id"
+    cdkDrag
+    *ngFor="let task of tasks$ | async" [task]="task"
+    (click)="showDialog(task)"></task>
   <div (click)="addTask()">Add Task</div>
 </div>
 <div (click)="removeTaskGroup()">Remove Group</div>

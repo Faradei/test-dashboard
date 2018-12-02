@@ -4,7 +4,8 @@ import { Task } from '../model/Task';
 export enum ActionTypes {
   AddTask = '[TASK] Add',
   DeleteTask = '[TASK] Delete',
-  DeleteTasksFromGroup = '[TASK] DeleteTasksFromGroup'
+  DeleteTasksFromGroup = '[TASK] DeleteTasksFromGroup',
+  MoveToGroup = '[TASK] MoveToGroup'
 }
 
 export class AddTask implements Action {
@@ -29,4 +30,10 @@ export class DeleteTasksFromGroup implements Action {
   constructor(public payload: number) {}
 }
 
-export type TaskAction = AddTask | DeleteTask | DeleteTasksFromGroup;
+export class MoveToGroup implements Action {
+  readonly type = ActionTypes.MoveToGroup;
+
+  constructor(public payload: {taskId: number, groupId: number}) {}
+}
+
+export type TaskAction = AddTask | DeleteTask | DeleteTasksFromGroup | MoveToGroup;

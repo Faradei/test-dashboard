@@ -1,4 +1,6 @@
-<div class="task-group-container">
-  <task-group *ngFor="let taskGroup of taskGroups$ | async" [group]="taskGroup"></task-group>
+<div class="task-group-container" cdkDropListGroup>
+  <task-group
+    *ngFor="let taskGroup of taskGroups$ | async"
+    [group]="taskGroup"></task-group>
   <div class="add-group-block"><span (click)="addTaskGroup()">Add</span></div>
 </div>

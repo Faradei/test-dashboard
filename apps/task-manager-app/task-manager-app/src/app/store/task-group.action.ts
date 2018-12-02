@@ -3,7 +3,8 @@ import { TaskGroup } from '../model/TaskGroup';
 
 export enum ActionTypes {
   AddTaskGroup = '[TASK_GROUP] Add',
-  DeleteTaskGroup = '[TASK_GROUP] Delete'
+  DeleteTaskGroup = '[TASK_GROUP] Delete',
+  UpdateGroupName = '[TASK_GROUP] UpdateName'
 }
 
 export class AddTaskGroup implements Action {
@@ -18,5 +19,11 @@ export class DeleteTaskGroup implements Action {
   constructor(public payload: TaskGroup) {}
 }
 
+export class UpdateTaskGroupName implements Action {
+  readonly type = ActionTypes.UpdateGroupName;
 
-export type TaskGroupAction = AddTaskGroup | DeleteTaskGroup;
+  constructor(public payload: { groupId: number, newName: string }) {}
+}
+
+
+export type TaskGroupAction = AddTaskGroup | DeleteTaskGroup | UpdateTaskGroupName;

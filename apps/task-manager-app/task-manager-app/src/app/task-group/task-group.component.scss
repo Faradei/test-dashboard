@@ -26,3 +26,18 @@ task {
   width: 37px;
   height: 37px;
 }
+
+input {
+  width: 90%;
+  text-align: center;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+
+  &:hover {
+    border-style: dashed;
+  }
+
+  &:active, &:focus {
+    border-color: transparent;
+  }
+}

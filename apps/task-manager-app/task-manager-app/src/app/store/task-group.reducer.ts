@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityState, EntityAdapter, createEntityAdapter, Update } from '@ngrx/entity';
 import { TaskGroup } from '../model/TaskGroup';
 import { ActionTypes, TaskGroupAction } from './task-group.action';
 
@@ -30,6 +30,16 @@ export function taskGroupReducer(state = intialTaskGroupState, action: TaskGroup
 
     case ActionTypes.DeleteTaskGroup:
       return taskGroupAdapter.removeOne(action.payload.id, state);
+
+    case ActionTypes.UpdateGroupName:
+      const update: Update<TaskGroup> = {
+        id: action.payload.groupId,
+        changes: {
+          name: action.payload.newName
+        }
+      };
+
+      return taskGroupAdapter.updateOne(update, state);
 
     default:
       return state;

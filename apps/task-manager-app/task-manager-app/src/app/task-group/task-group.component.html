@@ -1,4 +1,4 @@
-<span>{{ group.name }}</span>
+<input type="text" [formControl]="name" (focusout)="updateName()">
 <div
   class="tasks-container"
   cdkDropList

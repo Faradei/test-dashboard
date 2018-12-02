@@ -5,6 +5,6 @@
     cdkDrag
     *ngFor="let task of tasks$ | async" [task]="task"
     (click)="showDialog(task)"></task>
-  <div (click)="addTask()">Add Task</div>
+  <div class="hover add" (click)="addTask()"></div>
 </div>
-<div (click)="removeTaskGroup()">Remove Group</div>
+<div class="hover remove" (click)="removeTaskGroup()"></div>

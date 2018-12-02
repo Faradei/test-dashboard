@@ -11,5 +11,15 @@
     flex-direction: column;
     box-sizing: border-box;
     align-items: center;
+
+    ::ng-deep .hover {
+      visibility: hidden;
+    }
+
+    &:hover {
+      ::ng-deep .hover {
+        visibility: visible;
+      }
+    }
   }
 }

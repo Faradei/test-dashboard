@@ -1,8 +1,14 @@
+:hover {
+  boder-color: red;
+}
+
 .tasks-container {
-  display: block;
+  display: flex;
   flex-grow: 9999999;
+  flex-direction: column;
   width: 90%;
   overflow: auto;
+  align-items: center;
 }
 
 task {
@@ -13,4 +19,10 @@ task {
   padding: 5px;
   box-sizing: border-box;
   margin: 10px 0;
+}
+
+.remove {
+  background-image: url('/assets/Remove.png');
+  width: 37px;
+  height: 37px;
 }

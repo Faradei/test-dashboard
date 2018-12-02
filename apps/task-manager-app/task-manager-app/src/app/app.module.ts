@@ -1,16 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
+import { taskGroupReducer } from './store/task-group.reducer';
+import { taskReducer } from './store/task.reducer';
+import { TaskGroupComponent } from './task-group/task-group.component';
+import { TaskComponent } from './task/task.component';
+import { MainComponent } from './main/main.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  },
+  {
+    path: 'add-task/:id',
+    component: AddTaskComponent
+  },
+  { path: '**', redirectTo: '' }
+];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TaskGroupComponent, TaskComponent, MainComponent, AddTaskComponent],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    EffectsModule.forRoot([]),
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    StoreModule.forRoot({
+      taskGroups: taskGroupReducer,
+      tasks: taskReducer
+    }),
+    RouterModule.forRoot(routes, { initialNavigation: 'enabled' })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+.task-group-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  task-group {
+    display: block;
+    width: 100px;
+    height: 300px;
+    border: 1px solid;
+  }
+}

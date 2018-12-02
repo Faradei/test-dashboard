@@ -19,6 +19,8 @@ import { MainComponent } from './main/main.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 
+import { AddTaskGuard } from './add-task-guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -26,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'add-task/:id',
-    component: AddTaskComponent
+    component: AddTaskComponent,
+    canActivate: [AddTaskGuard]
   },
   { path: '**', redirectTo: '' }
 ];

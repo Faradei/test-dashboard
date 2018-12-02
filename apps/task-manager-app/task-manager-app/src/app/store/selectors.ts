@@ -6,6 +6,7 @@ import * as fromTask from './task.reducer';
 
 export const selectTaskGroupsState = createFeatureSelector<TaskGroupState>('taskGroups');
 export const selectAllTaskGroups = createSelector(selectTaskGroupsState, fromTaskGroup.selectAll);
+export const selectTaskGroupsIds = createSelector(selectTaskGroupsState, fromTaskGroup.selectIds);
 
 export const selectTasksState = createFeatureSelector<TaskState>('tasks');
 export const selectAllTasks = createSelector(selectTasksState, fromTask.selectAll);

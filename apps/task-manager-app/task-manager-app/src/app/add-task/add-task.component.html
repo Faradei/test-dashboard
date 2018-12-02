@@ -1,13 +1,14 @@
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-  <label>
-    Title:
-    <input type="text" formControlName="taskTitle">
-  </label>
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="taskTitle" required>
+  </mat-form-field>
 
-  <label>
-    Task Description:
-    <input type="text" formControlName="taskDescription">
-  </label>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="taskDescription" required>
+  </mat-form-field>
 
-  <button type="submit" [disabled]="!taskForm.valid">Add</button>
+  <button mat-button type="submit" [disabled]="!taskForm.valid">Add</button>
+
 </form>

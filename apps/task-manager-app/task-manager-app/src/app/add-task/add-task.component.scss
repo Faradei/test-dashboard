@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  max-width: 30px;
+}
+
+mat-form-field {
+  min-width: 100px;
+  max-width: 300px;
+}

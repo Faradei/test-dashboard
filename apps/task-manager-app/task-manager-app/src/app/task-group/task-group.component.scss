@@ -1,4 +1,16 @@
-task-group {
-  width: 100px;
-  height: 300px
+.tasks-container {
+  display: block;
+  flex-grow: 9999999;
+  width: 90%;
+  overflow: auto;
+}
+
+task {
+	width: 100%;
+	height: 50px;
+	background-color: gainsboro;
+  display: block;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 10px 0;
 }

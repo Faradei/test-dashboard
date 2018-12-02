@@ -1,6 +1,6 @@
 <span>{{ group.name }}</span>
 <div class="tasks-container">
   <task *ngFor="let task of tasks$ | async" [task]="task"></task>
+  <div (click)="addTask()">Add Task</div>
 </div>
-<div (click)="addTask()">Add Task</div>
 <div (click)="removeTaskGroup()">Remove Group</div>

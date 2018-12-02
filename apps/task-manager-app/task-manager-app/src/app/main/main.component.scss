@@ -2,10 +2,14 @@
   display: flex;
   flex-wrap: wrap;
 
-  task-group {
-    display: block;
-    width: 100px;
-    height: 300px;
+  .add-group-block, task-group {
+    display: flex;
+    width: 150px;
+    height: 500px;
     border: 1px solid;
+    padding: 15px 5px;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
   }
 }

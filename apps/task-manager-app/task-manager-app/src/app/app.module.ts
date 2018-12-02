@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
+  MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
+    MatToolbarModule,
     BrowserAnimationsModule,
     EffectsModule.forRoot([]),
     NxModule.forRoot(),
